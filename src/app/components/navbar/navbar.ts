@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { BriefingService } from '../../services/briefing.service';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -25,10 +26,10 @@ import { BriefingService } from '../../services/briefing.service';
               </linearGradient>
             </defs>
             <polygon points="68,10 96,10 38,150 10,150" fill="url(#ixyCyanGradNav)" />
-            <polygon points="110,150 140,150 240,10 210,10" fill="#F5F7FA" />
-            <polygon points="110,10 140,10 173,56 158,77" fill="#F5F7FA" />
-            <polygon points="186,104 201,83 249,150 219,150" fill="#F5F7FA" />
-            <polygon points="261,10 291,10 330,68 369,10 399,10 344,90 344,150 316,150 316,90" fill="url(#ixySilverGradNav)" />
+            <polygon class="ixy-x-path" points="110,150 140,150 240,10 210,10" fill="var(--color-logo-white, #F5F7FA)" />
+            <polygon class="ixy-x-path" points="110,10 140,10 173,56 158,77" fill="var(--color-logo-white, #F5F7FA)" />
+            <polygon class="ixy-x-path" points="186,104 201,83 249,150 219,150" fill="var(--color-logo-white, #F5F7FA)" />
+            <polygon class="ixy-y-path" points="261,10 291,10 330,68 369,10 399,10 344,90 344,150 316,150 316,90" fill="url(#ixySilverGradNav)" />
           </svg>
         </a>
 
@@ -40,9 +41,35 @@ import { BriefingService } from '../../services/briefing.service';
           <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
         </nav>
 
-        <!-- Right Action Button -->
+        <!-- Right Action Button & Theme Toggle -->
         <div class="nav-actions">
+          <!-- Theme Switch Button -->
+          <button 
+            type="button"
+            (click)="themeService.toggleTheme()" 
+            class="btn-theme-toggle" 
+            [attr.aria-label]="themeService.isLight() ? 'Switch to dark theme' : 'Switch to light theme'"
+            [title]="themeService.isLight() ? 'Switch to dark theme' : 'Switch to light theme'">
+            <!-- Sun icon in light mode -->
+            <svg *ngIf="themeService.isLight()" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon in dark mode -->
+            <svg *ngIf="!themeService.isLight()" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
           <button (click)="briefingService.open()" class="btn-nav-briefing">Request a Briefing</button>
+
           <!-- Mobile Hamburger -->
           <button (click)="toggleMobileMenu()" class="mobile-toggle" aria-label="Toggle menu">
             <svg *ngIf="!isMobileMenuOpen()" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -64,6 +91,20 @@ import { BriefingService } from '../../services/briefing.service';
         <a routerLink="/solutions" (click)="closeMobileMenu()" routerLinkActive="active" class="mobile-link">Solutions</a>
         <a routerLink="/about" (click)="closeMobileMenu()" routerLinkActive="active" class="mobile-link">About</a>
         <a routerLink="/contact" (click)="closeMobileMenu()" routerLinkActive="active" class="mobile-link">Contact</a>
+        <button type="button" (click)="themeService.toggleTheme()" class="mobile-theme-row">
+          <span class="theme-row-label">THEME</span>
+          <span class="theme-row-val">
+            <svg *ngIf="themeService.isLight()" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+            </svg>
+            <svg *ngIf="!themeService.isLight()" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            {{ themeService.isLight() ? 'LIGHT' : 'DARK' }}
+          </span>
+        </button>
         <button (click)="onMobileBriefing()" class="btn-nav-briefing w-full" style="justify-content: center; margin-top: 12px;">Request a Briefing</button>
       </div>
     </header>
@@ -75,10 +116,11 @@ import { BriefingService } from '../../services/briefing.service';
       left: 0;
       width: 100%;
       height: 72px;
-      background: rgba(7, 9, 14, 0.85);
+      background: var(--color-nav-bg, rgba(7, 9, 14, 0.85));
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(24, 35, 55, 0.6);
+      border-bottom: 1px solid var(--color-border);
       z-index: 100;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
     .navbar-container {
@@ -103,6 +145,19 @@ import { BriefingService } from '../../services/briefing.service';
       flex-shrink: 0;
     }
 
+    .ixy-x-path {
+      fill: var(--color-logo-white);
+      transition: fill 0.2s ease;
+    }
+
+    .ixy-y-path {
+      transition: fill 0.2s ease;
+    }
+
+    :host-context([data-theme="light"]) .ixy-y-path {
+      fill: #64748b;
+    }
+
     .navbar-brand:hover .brand-ixy-svg {
       filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.75));
       transform: translateY(-1px);
@@ -125,7 +180,7 @@ import { BriefingService } from '../../services/briefing.service';
     }
 
     .nav-link:hover {
-      color: #ffffff;
+      color: var(--color-text-heading);
     }
 
     .nav-link.active {
@@ -147,7 +202,29 @@ import { BriefingService } from '../../services/briefing.service';
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
+    }
+
+    .btn-theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-theme-toggle:hover {
+      color: var(--color-cyan);
+      border-color: var(--color-cyan);
+      background: rgba(0, 194, 255, 0.08);
+      box-shadow: 0 0 10px var(--color-border-glow);
     }
 
     .mobile-toggle {
@@ -164,21 +241,50 @@ import { BriefingService } from '../../services/briefing.service';
       flex-direction: column;
       gap: 12px;
       padding: 24px;
-      background: #090e18;
+      background: var(--color-surface);
       border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
     }
 
     .mobile-link {
-      color: var(--color-text-secondary);
+      color: var(--color-text-body);
       text-decoration: none;
       font-size: 1.05rem;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
     }
 
     .mobile-link.active {
       color: var(--color-cyan);
       font-weight: 600;
+    }
+
+    .mobile-theme-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      margin-top: 6px;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      background: var(--color-surface-hover);
+      color: var(--color-text-body);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .theme-row-label {
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .theme-row-val {
+      display: inline-flex;
+      align-items: center;
+      color: var(--color-cyan);
+      font-weight: 700;
     }
 
     @media (max-width: 820px) {
@@ -198,6 +304,7 @@ import { BriefingService } from '../../services/briefing.service';
 })
 export class NavbarComponent {
   readonly briefingService = inject(BriefingService);
+  readonly themeService = inject(ThemeService);
   isMobileMenuOpen = signal(false);
 
   toggleMobileMenu(): void {

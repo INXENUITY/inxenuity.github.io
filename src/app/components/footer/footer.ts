@@ -18,11 +18,11 @@ import { RouterLink } from '@angular/router';
                   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                   font-weight: 500;
                   font-size: 23px;
-                  fill: #8C9BAE;
+                  fill: var(--color-logo-tagline, #8C9BAE);
                   letter-spacing: 0.28em;
                 }
               </style>
-              <g fill="#F5F7FA">
+              <g class="brand-lettering" fill="var(--color-logo-white, #F5F7FA)">
                 <polygon points="10,18 30,10 30,90 10,90" />
                 <polygon points="56,10 75,10 116,60 116,10 136,10 136,90 117,90 76,40 76,90 56,90" />
                 <polygon points="158,10 181,10 203,39 225,10 248,10 215,50 250,90 227,90 203,59 179,90 156,90 191,50" />
@@ -94,11 +94,12 @@ import { RouterLink } from '@angular/router';
   `,
   styles: [`
     .footer-wrapper {
-      background: #05070a;
-      border-top: 1px solid rgba(24, 35, 55, 0.7);
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border);
       margin-top: 80px;
       position: relative;
       z-index: 10;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
     .footer-container {
@@ -193,12 +194,12 @@ import { RouterLink } from '@angular/router';
     }
 
     .col-links a:hover {
-      color: #ffffff;
+      color: var(--color-text-heading);
       transform: translateX(2px);
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--color-border);
       padding: 24px 0;
     }
 

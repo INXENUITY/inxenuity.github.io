@@ -416,18 +416,18 @@ import { BriefingService } from '../../services/briefing.service';
     /* Stack Box Diagram Styles */
     .stack-box-container {
       position: relative;
-      background: rgba(10, 15, 25, 0.85);
+      background: var(--color-wireframe-bg);
       border: 1px solid var(--color-border);
       padding: 32px 28px;
       display: flex;
       flex-direction: column;
       gap: 0;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
     }
 
     .stack-box {
-      border: 1px solid rgba(0, 194, 255, 0.35);
-      background: rgba(12, 19, 32, 0.7);
+      border: 1px solid var(--color-hud-box-border);
+      background: var(--color-hud-box);
       padding: 16px 20px;
       border-radius: 2px;
       transition: all 0.2s ease;
@@ -510,9 +510,9 @@ import { BriefingService } from '../../services/briefing.service';
 
     /* Architecture Section */
     .architecture-section {
-      background: rgba(9, 13, 21, 0.5);
-      border-top: 1px solid rgba(24, 35, 55, 0.4);
-      border-bottom: 1px solid rgba(24, 35, 55, 0.4);
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
     }
 
     .architecture-grid {
@@ -545,7 +545,7 @@ import { BriefingService } from '../../services/briefing.service';
       align-items: flex-start;
       gap: 20px;
       padding: 16px 20px;
-      background: rgba(12, 18, 30, 0.6);
+      background: var(--color-surface-translucent);
       border: 1px solid var(--color-border);
       border-radius: 2px;
       transition: border-color 0.2s ease;
@@ -601,7 +601,7 @@ import { BriefingService } from '../../services/briefing.service';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(8, 12, 20, 0.6);
+      background: var(--color-surface-hover);
       min-height: 220px;
     }
 

@@ -176,14 +176,14 @@ import { FormsModule } from '@angular/forms';
       flex-direction: column;
       border: 1px solid var(--color-border);
       border-radius: 2px;
-      background: rgba(12, 17, 28, 0.7);
+      background: var(--color-surface-translucent);
       margin-top: 18px;
       margin-bottom: 32px;
     }
 
     .channel-item {
       padding: 20px 24px;
-      border-bottom: 1px solid rgba(24, 35, 55, 0.6);
+      border-bottom: 1px solid var(--color-border);
     }
 
     .channel-item:last-child {
@@ -202,7 +202,7 @@ import { FormsModule } from '@angular/forms';
     .channel-link {
       font-family: var(--font-mono);
       font-size: 0.95rem;
-      color: #ffffff;
+      color: var(--color-text-heading);
       text-decoration: none;
       transition: color 0.2s ease;
     }
@@ -214,13 +214,13 @@ import { FormsModule } from '@angular/forms';
     .channel-text {
       font-family: var(--font-sans);
       font-size: 0.95rem;
-      color: #ffffff;
+      color: var(--color-text-heading);
     }
 
     /* Response Time Card */
     .response-time-card {
       padding: 24px;
-      background: rgba(10, 16, 27, 0.75);
+      background: var(--color-surface-translucent);
     }
 
     .response-eyebrow {
@@ -253,7 +253,7 @@ import { FormsModule } from '@angular/forms';
 
     .form-card {
       padding: 36px;
-      background: rgba(10, 15, 25, 0.8);
+      background: var(--color-surface-translucent);
     }
 
     .form-row {
@@ -268,7 +268,7 @@ import { FormsModule } from '@angular/forms';
       justify-content: space-between;
       margin-top: 24px;
       padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--color-border);
     }
 
     .required-note {

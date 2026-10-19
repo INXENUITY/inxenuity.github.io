@@ -328,14 +328,14 @@ import { BriefingService } from '../../services/briefing.service';
 
     .schematic-card {
       position: relative;
-      background: rgba(10, 15, 25, 0.85);
+      background: var(--color-wireframe-bg);
       border: 1px solid var(--color-border);
       padding: 30px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 280px;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
     }
 
     .schematic-svg {

@@ -117,7 +117,7 @@ import { FormsModule } from '@angular/forms';
     .modal-card {
       width: 100%;
       max-width: 640px;
-      background: #090e18;
+      background: var(--color-surface);
       border: 1px solid var(--color-border);
       padding: 40px;
       position: relative;
@@ -143,7 +143,7 @@ import { FormsModule } from '@angular/forms';
     }
 
     .modal-close:hover {
-      color: #ffffff;
+      color: var(--color-text-heading);
     }
 
     .modal-title {
@@ -180,7 +180,7 @@ import { FormsModule } from '@angular/forms';
       gap: 16px;
       margin-top: 20px;
       padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid var(--color-border);
     }
 
     @media (max-width: 600px) {
