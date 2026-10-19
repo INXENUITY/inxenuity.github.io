@@ -1,6 +1,6 @@
-# InXenuity — Multimodal AI Architecture for Enterprise
+# INXENUITY — Multimodal AI Architecture for Enterprise
 
-Official website for **InXenuity** ([inxenuity.github.io](https://inxenuity.github.io)), built with modern Angular (standalone components, signals, and application builder).
+Official website for **INXENUITY** ([inxenuity.com](https://inxenuity.com)), built with modern Angular (standalone components, signals, and application builder).
 
 ## Built as per Designs
 

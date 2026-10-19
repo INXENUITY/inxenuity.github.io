@@ -96,7 +96,7 @@ import { BriefingService } from '../../services/briefing.service';
         <div class="container">
           <div class="section-header">
             <div class="tag-eyebrow no-dot">— CORE CAPABILITIES</div>
-            <h2 class="section-title">Four Pillars of the InXenuity Platform</h2>
+            <h2 class="section-title">Four Pillars of the INXENUITY Platform</h2>
           </div>
 
           <div class="grid-2 pillars-grid">
@@ -196,7 +196,7 @@ import { BriefingService } from '../../services/briefing.service';
               <div class="tag-eyebrow no-dot">— PLATFORM ARCHITECTURE</div>
               <h2 class="arch-title">One Unified AI Stack. Every Deployment Target.</h2>
               <p class="arch-desc">
-                InXenuity's platform abstracts the complexity of multimodal AI deployment into a single, coherent architecture — from raw sensor input through inference to action across any environment.
+                INXENUITY's platform abstracts the complexity of multimodal AI deployment into a single, coherent architecture — from raw sensor input through inference to action across any environment.
               </p>
 
               <div class="numbered-stack-list">
@@ -320,7 +320,7 @@ import { BriefingService } from '../../services/briefing.service';
                 <div class="card-eyebrow">PHYSICAL / ROBOTICS</div>
                 <h3 class="card-title">Physical AI Systems — Robotics & Edge</h3>
                 <p class="card-text">
-                  Run vision and audio intelligence directly on robotic platforms and edge hardware. InXenuity's optimised runtimes deliver real-time perception and decision-making at the point of action.
+                  Run vision and audio intelligence directly on robotic platforms and edge hardware. INXENUITY's optimised runtimes deliver real-time perception and decision-making at the point of action.
                 </p>
               </div>
             </div>
@@ -363,7 +363,7 @@ import { BriefingService } from '../../services/briefing.service';
             <div class="cta-content">
               <h2 class="cta-title">Deploy Intelligence at Every Layer</h2>
               <p class="cta-desc">
-                InXenuity is built for organisations that require AI infrastructure to perform at the edge of what's possible.
+                INXENUITY is built for organisations that require AI infrastructure to perform at the edge of what's possible.
               </p>
             </div>
             <div class="cta-actions">

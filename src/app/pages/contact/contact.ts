@@ -31,23 +31,13 @@ import { FormsModule } from '@angular/forms';
 
               <div class="contact-channels">
                 <div class="channel-item">
-                  <div class="channel-label">GENERAL INQUIRIES</div>
+                  <div class="channel-label">EMAIL CONTACT</div>
                   <a href="mailto:hello@inxenuity.com" class="channel-link">hello&#64;inxenuity.com</a>
                 </div>
 
                 <div class="channel-item">
-                  <div class="channel-label">TECHNICAL PARTNERSHIPS</div>
-                  <a href="mailto:partners@inxenuity.com" class="channel-link">partners&#64;inxenuity.com</a>
-                </div>
-
-                <div class="channel-item">
-                  <div class="channel-label">PRESS & ANALYST RELATIONS</div>
-                  <a href="mailto:press@inxenuity.com" class="channel-link">press&#64;inxenuity.com</a>
-                </div>
-
-                <div class="channel-item">
                   <div class="channel-label">HEADQUARTERS</div>
-                  <div class="channel-text">San Francisco, CA</div>
+                  <div class="channel-text">HYDERABAD, IN</div>
                 </div>
               </div>
 

@@ -18,7 +18,7 @@ import { BriefingService } from '../../services/briefing.service';
               Deployment Environment
             </h1>
             <p class="hero-subtitle">
-              From industrial digital twins to autonomous robotics, InXenuity delivers production-ready multimodal AI across the full spectrum of enterprise environments.
+              From industrial digital twins to autonomous robotics, INXENUITY delivers production-ready multimodal AI across the full spectrum of enterprise environments.
             </p>
           </div>
         </div>
@@ -33,7 +33,7 @@ import { BriefingService } from '../../services/briefing.service';
               <div class="tag-eyebrow no-dot">— DIGITAL TWINS</div>
               <h2 class="solution-title">Real-Time Digital Twin Intelligence</h2>
               <p class="solution-desc">
-                Fuse live sensor streams, camera feeds, and operational data into a continuously updated digital replica of your physical environment. InXenuity's fusion engine synchronises vision and audio signals with IoT telemetry at sub-second latency, enabling predictive maintenance, anomaly detection, and simulation-driven optimisation.
+                Fuse live sensor streams, camera feeds, and operational data into a continuously updated digital replica of your physical environment. INXENUITY's fusion engine synchronises vision and audio signals with IoT telemetry at sub-second latency, enabling predictive maintenance, anomaly detection, and simulation-driven optimisation.
               </p>
               <ul class="bullet-list">
                 <li>Predictive maintenance with 94% fault detection accuracy</li>
@@ -72,7 +72,7 @@ import { BriefingService } from '../../services/briefing.service';
                 <line x1="265" y1="75" x2="290" y2="85" stroke="#00C2FF" stroke-width="0.8" stroke-dasharray="2 2"/>
                 <line x1="290" y1="85" x2="310" y2="70" stroke="#00C2FF" stroke-width="0.8" stroke-dasharray="2 2"/>
 
-                <!-- InXenuity Fusion Banner Below -->
+                <!-- INXENUITY Fusion Banner Below -->
                 <rect x="100" y="140" width="180" height="46" rx="2" stroke="#00C2FF" stroke-width="1" fill="#0D1424"/>
                 <text x="190" y="158" fill="#FFFFFF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle" letter-spacing="0.08em">INXENUITY FUSION</text>
                 <text x="190" y="174" fill="#94A3B8" font-family="sans-serif" font-size="8" text-anchor="middle">Multimodal · Real-time · Sub-second</text>
@@ -124,7 +124,7 @@ import { BriefingService } from '../../services/briefing.service';
               <div class="tag-eyebrow no-dot">— ROBOTICS & AUTOMATION</div>
               <h2 class="solution-title">Perception for Autonomous Systems</h2>
               <p class="solution-desc">
-                Give robots the ability to see, hear, and reason about their environment in real time. InXenuity's edge-optimised runtime runs full multimodal perception within an 8W power budget, enabling safe navigation, object manipulation, and human-robot collaboration in unstructured environments.
+                Give robots the ability to see, hear, and reason about their environment in real time. INXENUITY's edge-optimised runtime runs full multimodal perception within an 8W power budget, enabling safe navigation, object manipulation, and human-robot collaboration in unstructured environments.
               </p>
               <ul class="bullet-list">
                 <li>Full perception stack within 8W TDP on Jetson Orin NX</li>
@@ -143,7 +143,7 @@ import { BriefingService } from '../../services/briefing.service';
               <div class="tag-eyebrow no-dot">— CLOUD AI INFRASTRUCTURE</div>
               <h2 class="solution-title">Scalable Multimodal AI at Cloud Scale</h2>
               <p class="solution-desc">
-                Deploy the full InXenuity platform on Kubernetes with horizontal autoscaling, multi-tenant model serving, and enterprise observability. Process thousands of concurrent video and audio streams with deterministic SLAs, backed by a 99.99% uptime managed service.
+                Deploy the full INXENUITY platform on Kubernetes with horizontal autoscaling, multi-tenant model serving, and enterprise observability. Process thousands of concurrent video and audio streams with deterministic SLAs, backed by a 99.99% uptime managed service.
               </p>
               <ul class="bullet-list">
                 <li>2,400 fps multi-camera throughput on a single node</li>

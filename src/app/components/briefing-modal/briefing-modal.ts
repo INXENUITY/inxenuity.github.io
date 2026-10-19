@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
           <div class="tag-eyebrow">TECHNICAL ENGAGEMENT</div>
           <h2 class="modal-title">Request an Engineering Briefing</h2>
           <p class="modal-desc">
-            Schedule a confidential 45-minute deep-dive with an InXenuity systems architect to review your multimodal AI workload, hardware constraints, and deployment targets.
+            Schedule a confidential 45-minute deep-dive with an INXENUITY systems architect to review your multimodal AI workload, hardware constraints, and deployment targets.
           </p>
 
           <form (ngSubmit)="onSubmit()" class="modal-form">

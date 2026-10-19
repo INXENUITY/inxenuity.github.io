@@ -12,27 +12,49 @@ import { BriefingService } from '../../services/briefing.service';
       <div class="container navbar-container">
         <!-- Logo -->
         <a routerLink="/" class="navbar-brand">
-          <svg class="brand-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="3.5" fill="#00C2FF" />
-            <line x1="20" y1="20" x2="11" y2="11" stroke="#00C2FF" stroke-width="1.2" stroke-opacity="0.7"/>
-            <line x1="20" y1="20" x2="29" y2="11" stroke="#00C2FF" stroke-width="1.2" stroke-opacity="0.7"/>
-            <line x1="20" y1="20" x2="11" y2="29" stroke="#00C2FF" stroke-width="1.2" stroke-opacity="0.7"/>
-            <line x1="20" y1="20" x2="29" y2="29" stroke="#00C2FF" stroke-width="1.2" stroke-opacity="0.7"/>
-            <line x1="20" y1="20" x2="20" y2="7" stroke="#0080FF" stroke-width="1" stroke-opacity="0.6"/>
-            <line x1="20" y1="20" x2="20" y2="33" stroke="#0080FF" stroke-width="1" stroke-opacity="0.6"/>
-            <line x1="20" y1="20" x2="7" y2="20" stroke="#0080FF" stroke-width="1" stroke-opacity="0.6"/>
-            <line x1="20" y1="20" x2="33" y2="20" stroke="#0080FF" stroke-width="1" stroke-opacity="0.6"/>
-            <circle cx="11" cy="11" r="2.5" fill="#FFFFFF" />
-            <circle cx="29" cy="11" r="2.5" fill="#00C2FF" />
-            <circle cx="11" cy="29" r="2.5" fill="#00C2FF" />
-            <circle cx="29" cy="29" r="2.5" fill="#FFFFFF" />
-            <circle cx="20" cy="7" r="1.5" fill="#0080FF" />
-            <circle cx="20" cy="33" r="1.5" fill="#0080FF" />
-            <circle cx="7" cy="20" r="1.5" fill="#0080FF" />
-            <circle cx="33" cy="20" r="1.5" fill="#0080FF" />
-            <path d="M 20 7 L 33 20 L 20 33 L 7 20 Z" stroke="#00C2FF" stroke-width="0.8" stroke-dasharray="2 2" stroke-opacity="0.4"/>
+          <!-- IXY Vector Mark (ixy-logo-svg-2) -->
+          <svg class="brand-ixy-svg" viewBox="0 0 410 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ixyCyanGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#00E5FF" />
+                <stop offset="100%" stop-color="#00B8D4" />
+              </linearGradient>
+              <linearGradient id="ixySilverGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#B8C4D0" />
+                <stop offset="100%" stop-color="#90A0B0" />
+              </linearGradient>
+            </defs>
+            <polygon points="68,10 96,10 38,150 10,150" fill="url(#ixyCyanGradNav)" />
+            <polygon points="110,150 140,150 240,10 210,10" fill="#F5F7FA" />
+            <polygon points="110,10 140,10 173,56 158,77" fill="#F5F7FA" />
+            <polygon points="186,104 201,83 249,150 219,150" fill="#F5F7FA" />
+            <polygon points="261,10 291,10 330,68 369,10 399,10 344,90 344,150 316,150 316,90" fill="url(#ixySilverGradNav)" />
           </svg>
-          <span class="brand-text">In<span class="brand-gradient">Xenuity</span></span>
+
+          <!-- INXENUITY Vector Wordmark with Tagline (inxenuity-logo-svg-1) -->
+          <svg class="brand-company-svg" viewBox="0 0 855 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <style>
+              .nav-tagline {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-weight: 500;
+                font-size: 23px;
+                fill: #8C9BAE;
+                letter-spacing: 0.28em;
+              }
+            </style>
+            <g fill="#F5F7FA">
+              <polygon points="10,18 30,10 30,90 10,90" />
+              <polygon points="56,10 75,10 116,60 116,10 136,10 136,90 117,90 76,40 76,90 56,90" />
+              <polygon points="158,10 181,10 203,39 225,10 248,10 215,50 250,90 227,90 203,59 179,90 156,90 191,50" />
+              <polygon points="272,10 344,10 344,27 292,27 292,41 338,41 338,58 292,58 292,73 346,73 346,90 272,90" />
+              <polygon points="372,10 391,10 432,60 432,10 452,10 452,90 433,90 392,40 392,90 372,90" />
+              <path d="M480,10 H500 V56 C500,68 508,74 521,74 C534,74 542,68 542,56 V10 H562 V57 C562,79 546,91 521,91 C496,91 480,79 480,57 Z" />
+              <polygon points="590,18 610,10 610,90 590,90" />
+              <polygon points="632,10 714,10 714,28 683,28 683,90 663,90 663,28 632,28" />
+              <polygon points="730,10 753,10 781,46 809,10 832,10 791,62 791,90 771,90 771,62" />
+            </g>
+            <text x="427" y="142" class="nav-tagline" text-anchor="middle">TECHNOLOGY • SOFTWARE • AI</text>
+          </svg>
         </a>
 
         <!-- Desktop Navigation Links -->
@@ -94,24 +116,23 @@ import { BriefingService } from '../../services/briefing.service';
     .navbar-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
     }
 
-    .brand-logo-icon {
-      width: 32px;
+    .brand-ixy-svg {
       height: 32px;
+      width: auto;
+      max-width: 82px;
+      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));
+      flex-shrink: 0;
     }
 
-    .brand-text {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-    }
-
-    .brand-gradient {
-      color: #ffffff;
+    .brand-company-svg {
+      height: 32px;
+      width: auto;
+      max-width: 176px;
+      flex-shrink: 0;
     }
 
     .desktop-nav {

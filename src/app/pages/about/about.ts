@@ -18,7 +18,7 @@ import { BriefingService } from '../../services/briefing.service';
               Shipped AI at Scale
             </h1>
             <p class="hero-subtitle">
-              InXenuity was founded to close the gap between AI research and production reality — delivering multimodal intelligence that operates reliably in the environments that matter most.
+              INXENUITY was founded to close the gap between AI research and production reality — delivering multimodal intelligence that operates reliably in the environments that matter most.
             </p>
           </div>
         </div>
@@ -33,13 +33,13 @@ import { BriefingService } from '../../services/briefing.service';
               <div class="tag-eyebrow no-dot">— OUR STORY</div>
               <h2 class="story-title">From Research Lab to Production Floor</h2>
               <p class="story-para">
-                InXenuity was founded in 2019 by a team of computer vision researchers and systems engineers who had spent years watching promising AI models fail at the boundary between the lab and the real world. The problem was never the models — it was the infrastructure around them.
+                INXENUITY was founded in 2019 by a team of computer vision researchers and systems engineers who had spent years watching promising AI models fail at the boundary between the lab and the real world. The problem was never the models — it was the infrastructure around them.
               </p>
               <p class="story-para">
-                We built InXenuity to solve that infrastructure problem. Starting with a single use case — real-time defect detection on a semiconductor manufacturing line — we developed the sensor fusion and inference orchestration primitives that now underpin the entire platform.
+                We built INXENUITY to solve that infrastructure problem. Starting with a single use case — real-time defect detection on a semiconductor manufacturing line — we developed the sensor fusion and inference orchestration primitives that now underpin the entire platform.
               </p>
               <p class="story-para">
-                Today, InXenuity's platform processes over 4 billion inference requests per month across digital twin environments, autonomous robotics fleets, and cloud-scale video analytics pipelines. Every capability we ship has been validated in production before it reaches a customer.
+                Today, INXENUITY's platform processes over 4 billion inference requests per month across digital twin environments, autonomous robotics fleets, and cloud-scale video analytics pipelines. Every capability we ship has been validated in production before it reaches a customer.
               </p>
             </div>
 
@@ -131,7 +131,7 @@ import { BriefingService } from '../../services/briefing.service';
                 </div>
               </div>
               <p class="member-bio">
-                Former Principal Researcher, NVIDIA Research. PhD Computer Vision, MIT. Led the perception stack for NVIDIA's autonomous vehicle programme before founding InXenuity.
+                Former Principal Researcher, NVIDIA Research. PhD Computer Vision, MIT. Led the perception stack for NVIDIA's autonomous vehicle programme before founding INXENUITY.
               </p>
             </div>
 
