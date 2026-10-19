@@ -1,27 +1,49 @@
-# Avistec
+# InXenuity — Multimodal AI Architecture for Enterprise
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
+Official website for **InXenuity** ([inxenuity.github.io](https://inxenuity.github.io)), built with modern Angular (standalone components, signals, and application builder).
 
-## Development server
+## Built as per Designs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The website is constructed strictly in accordance with the technical design mockups in `/home/vinod/designs/`:
+- **Platform (`/` and `/platform`)** — Multimodal AI Architecture hero, four pillars of the platform, unified architecture layer diagram, and deployment targets (Digital Twins, Robotics & Edge, Cloud & Containerised).
+- **Solutions (`/solutions`)** — Enterprise deployment environments:
+  - Real-Time Digital Twin Intelligence (with physical-to-digital sync schematic)
+  - Perception for Autonomous Systems (8W TDP perception stack for robotics)
+  - Scalable Multimodal AI at Cloud Scale (Kubernetes tree autoscaling)
+  - Intelligence at the Network Edge (Offline-capable edge-to-cloud telemetry sync)
+- **About (`/about`)** — Story from research lab to production floor, 4B+ inference metrics, company mission, core engineering principles, leadership profiles, and engineering philosophy.
+- **Contact (`/contact`)** — Technical inquiry channels, response time SLA, and interactive Enterprise Inquiry form.
+- **Technical Briefing Modal** — Universal interactive scheduling modal accessible across all pages.
 
-## Code scaffolding
+## Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Framework**: Angular 22 (Standalone Components, Signals, Application Builder)
+- **Styling**: Cyber / Tactical HUD Design System with custom SVG technical wireframes and blueprint schematics
+- **Typography**: Inter (UI) & JetBrains Mono (Technical code/metrics)
+- **Deployment**: GitHub Pages compatible (`dist/inxenuity-site/browser/` with `404.html` and `CNAME`)
 
-## Build
+## Development
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+# Ensure Node.js LTS is loaded
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-## Running unit tests
+# Run development server
+npm start
+# App will be available at http://localhost:4200/
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Production Build
 
-## Running end-to-end tests
+```bash
+npm run build
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The production output will be generated in `dist/inxenuity-site/browser/`, complete with `CNAME` and `404.html` for GitHub Pages single-page routing.
 
-## Further help
+## Testing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+npm test -- --watch=false
+```
