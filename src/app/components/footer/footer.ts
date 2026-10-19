@@ -10,27 +10,8 @@ import { RouterLink } from '@angular/router';
       <div class="container footer-container">
         <!-- Brand & Description -->
         <div class="footer-brand-col">
-          <a routerLink="/" class="footer-brand">
-            <!-- IXY Vector Mark (ixy-logo-svg-2) -->
-            <svg class="brand-ixy-svg" viewBox="0 0 410 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="ixyCyanGradFoot" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#00E5FF" />
-                  <stop offset="100%" stop-color="#00B8D4" />
-                </linearGradient>
-                <linearGradient id="ixySilverGradFoot" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#B8C4D0" />
-                  <stop offset="100%" stop-color="#90A0B0" />
-                </linearGradient>
-              </defs>
-              <polygon points="68,10 96,10 38,150 10,150" fill="url(#ixyCyanGradFoot)" />
-              <polygon points="110,150 140,150 240,10 210,10" fill="#F5F7FA" />
-              <polygon points="110,10 140,10 173,56 158,77" fill="#F5F7FA" />
-              <polygon points="186,104 201,83 249,150 219,150" fill="#F5F7FA" />
-              <polygon points="261,10 291,10 330,68 369,10 399,10 344,90 344,150 316,150 316,90" fill="url(#ixySilverGradFoot)" />
-            </svg>
-
-            <!-- INXENUITY Vector Wordmark with Tagline (inxenuity-logo-svg-1) -->
+          <a routerLink="/" class="footer-brand" aria-label="INXENUITY Home">
+            <!-- Complete INXENUITY Vector Logo with Tagline (inxenuity-logo-svg-1) -->
             <svg class="brand-company-svg" viewBox="0 0 855 155" fill="none" xmlns="http://www.w3.org/2000/svg">
               <style>
                 .foot-tagline {
@@ -135,24 +116,21 @@ import { RouterLink } from '@angular/router';
     .footer-brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
       text-decoration: none;
-      margin-bottom: 20px;
-    }
-
-    .brand-ixy-svg {
-      height: 28px;
-      width: auto;
-      max-width: 72px;
-      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.35));
-      flex-shrink: 0;
+      margin-bottom: 22px;
     }
 
     .brand-company-svg {
-      height: 28px;
+      height: 38px;
       width: auto;
-      max-width: 155px;
+      max-width: 220px;
       flex-shrink: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-brand:hover .brand-company-svg {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
 
     .footer-desc {

@@ -11,8 +11,8 @@ import { BriefingService } from '../../services/briefing.service';
     <header class="navbar-wrapper">
       <div class="container navbar-container">
         <!-- Logo -->
-        <a routerLink="/" class="navbar-brand">
-          <!-- IXY Vector Mark (ixy-logo-svg-2) -->
+        <a routerLink="/" class="navbar-brand" aria-label="INXENUITY Home">
+          <!-- IXY Short Form Vector Logo (ixy-logo-svg-2) -->
           <svg class="brand-ixy-svg" viewBox="0 0 410 160" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="ixyCyanGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -29,31 +29,6 @@ import { BriefingService } from '../../services/briefing.service';
             <polygon points="110,10 140,10 173,56 158,77" fill="#F5F7FA" />
             <polygon points="186,104 201,83 249,150 219,150" fill="#F5F7FA" />
             <polygon points="261,10 291,10 330,68 369,10 399,10 344,90 344,150 316,150 316,90" fill="url(#ixySilverGradNav)" />
-          </svg>
-
-          <!-- INXENUITY Vector Wordmark with Tagline (inxenuity-logo-svg-1) -->
-          <svg class="brand-company-svg" viewBox="0 0 855 155" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <style>
-              .nav-tagline {
-                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                font-weight: 500;
-                font-size: 23px;
-                fill: #8C9BAE;
-                letter-spacing: 0.28em;
-              }
-            </style>
-            <g fill="#F5F7FA">
-              <polygon points="10,18 30,10 30,90 10,90" />
-              <polygon points="56,10 75,10 116,60 116,10 136,10 136,90 117,90 76,40 76,90 56,90" />
-              <polygon points="158,10 181,10 203,39 225,10 248,10 215,50 250,90 227,90 203,59 179,90 156,90 191,50" />
-              <polygon points="272,10 344,10 344,27 292,27 292,41 338,41 338,58 292,58 292,73 346,73 346,90 272,90" />
-              <polygon points="372,10 391,10 432,60 432,10 452,10 452,90 433,90 392,40 392,90 372,90" />
-              <path d="M480,10 H500 V56 C500,68 508,74 521,74 C534,74 542,68 542,56 V10 H562 V57 C562,79 546,91 521,91 C496,91 480,79 480,57 Z" />
-              <polygon points="590,18 610,10 610,90 590,90" />
-              <polygon points="632,10 714,10 714,28 683,28 683,90 663,90 663,28 632,28" />
-              <polygon points="730,10 753,10 781,46 809,10 832,10 791,62 791,90 771,90 771,62" />
-            </g>
-            <text x="427" y="142" class="nav-tagline" text-anchor="middle">TECHNOLOGY • SOFTWARE • AI</text>
           </svg>
         </a>
 
@@ -114,25 +89,23 @@ import { BriefingService } from '../../services/briefing.service';
     }
 
     .navbar-brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
       text-decoration: none;
     }
 
     .brand-ixy-svg {
-      height: 32px;
+      height: 36px;
       width: auto;
-      max-width: 82px;
-      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));
+      max-width: 95px;
+      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.45));
+      transition: filter 0.25s ease, transform 0.25s ease;
       flex-shrink: 0;
     }
 
-    .brand-company-svg {
-      height: 32px;
-      width: auto;
-      max-width: 176px;
-      flex-shrink: 0;
+    .navbar-brand:hover .brand-ixy-svg {
+      filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.75));
+      transform: translateY(-1px);
     }
 
     .desktop-nav {
