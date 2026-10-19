@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 160" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Cyan Gradient for the Slash -->
+    <linearGradient id="ixyCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="100%" stop-color="#00B8D4" />
+    </linearGradient>
+
+    <!-- Cool Silver Gradient for Y -->
+    <linearGradient id="ixySilver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B8C4D0" />
+      <stop offset="100%" stop-color="#90A0B0" />
+    </linearGradient>
+  </defs>
+
+  <!-- '/' Forward Slash -->
+  <polygon points="68,10 96,10 38,150 10,150" fill="url(#ixyCyan)" />
+
+  <!-- 'X' with Stencil Cut -->
+  <polygon points="110,150 140,150 240,10 210,10" fill="#F5F7FA" />
+  <polygon points="110,10 140,10 173,56 158,77" fill="#F5F7FA" />
+  <polygon points="186,104 201,83 249,150 219,150" fill="#F5F7FA" />
+
+  <!-- 'Y' -->
+  <polygon points="261,10 291,10 330,68 369,10 399,10 344,90 344,150 316,150 316,90" fill="url(#ixySilver)" />
+</svg>

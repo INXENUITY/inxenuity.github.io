@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 855 155" width="100%" height="100%" fill="none">
+  <style>
+    display=swap');
+    .tagline {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 500;
+      font-size: 23px;
+      fill: #8C9BAE;
+      letter-spacing: 0.28em;
+    }
+  </style>
+
+  <!-- INXENUITY Vector Wordmark -->
+  <g fill="#F5F7FA">
+    <polygon points="10,18 30,10 30,90 10,90" />
+    <polygon points="56,10 75,10 116,60 116,10 136,10 136,90 117,90 76,40 76,90 56,90" />
+    <polygon points="158,10 181,10 203,39 225,10 248,10 215,50 250,90 227,90 203,59 179,90 156,90 191,50" />
+    <polygon points="272,10 344,10 344,27 292,27 292,41 338,41 338,58 292,58 292,73 346,73 346,90 272,90" />
+    <polygon points="372,10 391,10 432,60 432,10 452,10 452,90 433,90 392,40 392,90 372,90" />
+    <path d="M480,10 H500 V56 C500,68 508,74 521,74 C534,74 542,68 542,56 V10 H562 V57 C562,79 546,91 521,91 C496,91 480,79 480,57 Z" />
+    <polygon points="590,18 610,10 610,90 590,90" />
+    <polygon points="632,10 714,10 714,28 683,28 683,90 663,90 663,28 632,28" />
+    <polygon points="730,10 753,10 781,46 809,10 832,10 791,62 791,90 771,90 771,62" />
+  </g>
+
+  <!-- Tagline -->
+  <text x="427" y="142" class="tagline" text-anchor="middle">TECHNOLOGY • SOFTWARE • AI</text>
+</svg>
