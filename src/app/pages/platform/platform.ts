@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { BriefingService } from '../../services/briefing.service';
-import { VideoVisualizerComponent } from '../../components/video-visualizer/video-visualizer';
 import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
 
 @Component({
   selector: 'app-platform',
   standalone: true,
-  imports: [RouterLink, VideoVisualizerComponent, TechLogosComponent],
+  imports: [RouterLink, TechLogosComponent],
   template: `
     <div class="page-wrapper">
       <!-- HERO SECTION -->
@@ -39,13 +39,18 @@ import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
             </div>
           </div>
 
-          <!-- Hero Video Stream Visualizer Card -->
-          <div class="hero-visualizer-wrap">
-            <app-video-visualizer 
-              [mode]="'multimodal'" 
-              [title]="'MULTIMODAL SENSOR STREAM // INX-CORE'"
-              [resolution]="'1080p60'">
-            </app-video-visualizer>
+          <!-- Hero Borderless Autoplay YouTube Video Player -->
+          <div class="hero-visualizer-wrap borderless-player">
+            <div class="borderless-video-container">
+              <iframe 
+                [src]="youtubeEmbedUrl" 
+                title="INXENUITY Platform Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -360,13 +365,43 @@ import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
       min-width: 0;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 194, 255, 0.1);
-      border: 1px solid var(--color-border);
-      transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+      border: none !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 194, 255, 0.12);
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1);
+      background: #000000;
     }
 
     .hero-visualizer-wrap:hover {
       transform: translateY(-2px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 50px rgba(0, 194, 255, 0.2);
+    }
+
+    .borderless-player {
+      border: none !important;
+      outline: none !important;
+    }
+
+    .borderless-video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #000000;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .borderless-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0 !important;
+      outline: none !important;
+    }
+
+    :host-context([data-theme="light"]) .hero-visualizer-wrap {
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14), 0 0 30px rgba(2, 132, 199, 0.1);
     }
 
     .hero-title {
@@ -621,4 +656,38 @@ import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
 })
 export class PlatformComponent {
   readonly briefingService = inject(BriefingService);
+  private readonly sanitizer = inject(DomSanitizer);
+
+  /**
+   * YouTube video URL or Video ID for the hero section player.
+   * You can replace this link with your actual YouTube video later.
+   * Supports:
+   * - Full URL: 'https://www.youtube.com/watch?v=...'
+   * - Short URL: 'https://youtu.be/...'
+   * - Embed URL: 'https://www.youtube.com/embed/...'
+   * - Video ID directly: '...'
+   */
+  youtubeVideoUrl = 'https://www.youtube.com/watch?v=ScMzIvxBSi4';
+
+  get youtubeEmbedUrl(): SafeResourceUrl {
+    const videoId = this.extractVideoId(this.youtubeVideoUrl);
+    // autoplay=1 and mute=1 ensure reliable autoplay across all modern browsers
+    const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&rel=0&modestbranding=1&playsinline=1`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+  }
+
+  private extractVideoId(urlOrId: string): string {
+    if (!urlOrId) return 'ScMzIvxBSi4';
+    const trimmed = urlOrId.trim();
+    if (trimmed.includes('watch?v=')) {
+      return trimmed.split('watch?v=')[1].split('&')[0];
+    }
+    if (trimmed.includes('youtu.be/')) {
+      return trimmed.split('youtu.be/')[1].split('?')[0];
+    }
+    if (trimmed.includes('embed/')) {
+      return trimmed.split('embed/')[1].split('?')[0];
+    }
+    return trimmed;
+  }
 }
