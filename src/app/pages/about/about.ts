@@ -33,20 +33,20 @@ import { BriefingService } from '../../services/briefing.service';
               <div class="tag-eyebrow no-dot">— OUR STORY</div>
               <h2 class="story-title">From Research Lab to Production Floor</h2>
               <p class="story-para">
-                INXENUITY was founded in 2019 by a team of computer vision researchers and systems engineers who had spent years watching promising AI models fail at the boundary between the lab and the real world. The problem was never the models — it was the infrastructure around them.
+                INXENUITY was founded in 2026 by a team of systems engineers and AI researchers with a clear mission: closing the gap between artificial intelligence research and reliable, real-world production systems.
               </p>
               <p class="story-para">
-                We built INXENUITY to solve that infrastructure problem. Starting with a single use case — real-time defect detection on a semiconductor manufacturing line — we developed the sensor fusion and inference orchestration primitives that now underpin the entire platform.
+                We built INXENUITY to solve the core infrastructure challenges of deploying AI across physical and digital frontiers. Developing high-precision sensor fusion, acoustic reasoning, and low-latency inference orchestration primitives, we engineered a platform that operates seamlessly across constrained edge hardware and high-throughput cloud clusters.
               </p>
               <p class="story-para">
-                Today, INXENUITY's platform processes over 4 billion inference requests per month across digital twin environments, autonomous robotics fleets, and cloud-scale video analytics pipelines. Every capability we ship has been validated in production before it reaches a customer.
+                Today, INXENUITY empowers modern enterprises with real-time digital twins, autonomous robotics perception, and industrial intelligence. Every capability we build is engineered for determinism, resilience, and scale.
               </p>
             </div>
 
             <!-- Right: 2x2 Stats Grid -->
             <div class="stats-grid">
               <div class="stat-card hud-card">
-                <div class="stat-number">2019</div>
+                <div class="stat-number">2026</div>
                 <div class="stat-label">Founded</div>
               </div>
 
@@ -121,59 +121,31 @@ import { BriefingService } from '../../services/briefing.service';
           </div>
 
           <div class="grid-2 team-grid">
-            <!-- 1. Dr. Anika Reyes -->
+            <!-- 1. SHIVA KARANTOTHU -->
             <div class="team-card hud-card">
               <div class="team-card-header">
-                <div class="avatar-badge">AR</div>
+                <div class="avatar-badge">SK</div>
                 <div class="team-title-wrap">
-                  <h3 class="member-name">Dr. Anika Reyes</h3>
-                  <div class="member-role">Co-founder & CEO</div>
+                  <h3 class="member-name">SHIVA KARANTOTHU</h3>
+                  <div class="member-role">Founder and CEO</div>
                 </div>
               </div>
               <p class="member-bio">
-                Former Principal Researcher, NVIDIA Research. PhD Computer Vision, MIT. Led the perception stack for NVIDIA's autonomous vehicle programme before founding INXENUITY.
+                Founder and Chief Executive Officer driving INXENUITY's vision to pioneer multimodal AI systems and real-time intelligence. Leads strategic direction, core technology roadmap, and deployment of resilient AI solutions across enterprise operations.
               </p>
             </div>
 
-            <!-- 2. Marcus Osei -->
+            <!-- 2. VINOD KARANTOTHU -->
             <div class="team-card hud-card">
               <div class="team-card-header">
-                <div class="avatar-badge">MO</div>
+                <div class="avatar-badge">VK</div>
                 <div class="team-title-wrap">
-                  <h3 class="member-name">Marcus Osei</h3>
-                  <div class="member-role">Co-founder & CTO</div>
+                  <h3 class="member-name">VINOD KARANTOTHU</h3>
+                  <div class="member-role">Technology Consultant</div>
                 </div>
               </div>
               <p class="member-bio">
-                Former Staff Engineer, Google DeepMind. Architected the distributed inference infrastructure serving 10B+ daily predictions. Holds 14 patents in real-time ML systems.
-              </p>
-            </div>
-
-            <!-- 3. Dr. Yuki Tanaka -->
-            <div class="team-card hud-card">
-              <div class="team-card-header">
-                <div class="avatar-badge">YT</div>
-                <div class="team-title-wrap">
-                  <h3 class="member-name">Dr. Yuki Tanaka</h3>
-                  <div class="member-role">VP Engineering</div>
-                </div>
-              </div>
-              <p class="member-bio">
-                Former Engineering Director, Boston Dynamics. Led the perception and planning software teams for the Spot and Atlas platforms. Expert in constrained-environment robotics.
-              </p>
-            </div>
-
-            <!-- 4. Priya Nair -->
-            <div class="team-card hud-card">
-              <div class="team-card-header">
-                <div class="avatar-badge">PN</div>
-                <div class="team-title-wrap">
-                  <h3 class="member-name">Priya Nair</h3>
-                  <div class="member-role">VP Product</div>
-                </div>
-              </div>
-              <p class="member-bio">
-                Former Product Lead, Palantir Foundry. Spent eight years translating complex AI infrastructure into enterprise workflows for defence, energy, and manufacturing clients.
+                Technology Consultant advising on scalable cloud platforms, distributed model inference pipelines, and enterprise systems engineering. Guides architecture implementation for high-throughput multimodal workloads and edge deployments.
               </p>
             </div>
           </div>
@@ -312,7 +284,7 @@ import { BriefingService } from '../../services/briefing.service';
     .stat-number {
       font-size: 2.8rem;
       font-weight: 800;
-      color: #38bdf8;
+      color: var(--color-cyan);
       letter-spacing: -0.03em;
       margin-bottom: 8px;
       line-height: 1;
@@ -336,7 +308,7 @@ import { BriefingService } from '../../services/briefing.service';
     .principle-title {
       font-size: 1.25rem;
       margin-bottom: 12px;
-      color: #ffffff;
+      color: var(--color-text-heading);
     }
 
     .principle-text {
@@ -347,49 +319,83 @@ import { BriefingService } from '../../services/briefing.service';
 
     /* Team */
     .team-card {
-      padding: 28px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-radius: 12px;
     }
 
     .team-card-header {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 16px;
     }
 
     .avatar-badge {
-      width: 44px;
-      height: 44px;
-      background: rgba(0, 194, 255, 0.1);
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 194, 255, 0.12);
       border: 1px solid var(--color-cyan);
-      border-radius: 4px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-mono);
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--color-cyan);
       flex-shrink: 0;
     }
 
     .member-name {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text-heading);
+      letter-spacing: -0.01em;
     }
 
     .member-role {
       font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: #38bdf8;
-      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-cyan);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 4px;
     }
 
     .member-bio {
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       color: var(--color-text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
+    }
+
+    /* Light Theme Contrast Protections */
+    :host-context([data-theme="light"]) .member-name,
+    :host-context(.light-theme) .member-name,
+    [data-theme="light"] .member-name,
+    .light-theme .member-name {
+      color: #0f172a !important;
+    }
+
+    :host-context([data-theme="light"]) .principle-title,
+    :host-context([data-theme="light"]) .philosophy-title,
+    :host-context(.light-theme) .principle-title,
+    :host-context(.light-theme) .philosophy-title {
+      color: #0f172a !important;
+    }
+
+    :host-context([data-theme="light"]) .avatar-badge,
+    :host-context(.light-theme) .avatar-badge {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: #0284c7;
+      color: #0284c7;
+    }
+
+    :host-context([data-theme="light"]) .member-role,
+    :host-context(.light-theme) .member-role {
+      color: #0284c7;
     }
 
     /* Philosophy */
@@ -414,7 +420,7 @@ import { BriefingService } from '../../services/briefing.service';
     .philosophy-title {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--color-text-heading);
     }
 
     .philosophy-text {

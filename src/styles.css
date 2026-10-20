@@ -492,6 +492,20 @@ html.light-theme .hud-card:hover {
   border-color: rgba(2, 132, 199, 0.45);
 }
 
+[data-theme="light"] .member-name,
+html.light-theme .member-name {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .card-title,
+html.light-theme .card-title,
+[data-theme="light"] .principle-title,
+html.light-theme .principle-title,
+[data-theme="light"] .philosophy-title,
+html.light-theme .philosophy-title {
+  color: #0f172a;
+}
+
 /* Buttons */
 [data-theme="light"] .btn-secondary,
 html.light-theme .btn-secondary {

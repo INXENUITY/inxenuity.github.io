@@ -543,7 +543,7 @@ import { VideoVisualizerComponent } from '../../components/video-visualizer/vide
     .num-title {
       font-size: 1rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--color-text-heading);
       margin-bottom: 4px;
     }
 
