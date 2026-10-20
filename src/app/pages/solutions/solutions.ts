@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BriefingService } from '../../services/briefing.service';
 import { VideoVisualizerComponent } from '../../components/video-visualizer/video-visualizer';
+import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
 
 @Component({
   selector: 'app-solutions',
   standalone: true,
-  imports: [RouterLink, VideoVisualizerComponent],
+  imports: [RouterLink, VideoVisualizerComponent, TechLogosComponent],
   template: `
     <div class="page-wrapper">
       <!-- HERO SECTION -->
@@ -98,6 +99,14 @@ import { VideoVisualizerComponent } from '../../components/video-visualizer/vide
                 <li>Multi-tenant model isolation with RBAC</li>
                 <li>OpenTelemetry-compatible observability stack</li>
               </ul>
+              <div class="tech-stack-row">
+                <span class="tech-badge-chip">Kubernetes</span>
+                <span class="tech-badge-chip">Docker</span>
+                <span class="tech-badge-chip">AWS</span>
+                <span class="tech-badge-chip">Google Cloud</span>
+                <span class="tech-badge-chip">Azure</span>
+                <span class="tech-badge-chip">GHCR</span>
+              </div>
             </div>
 
             <!-- Interactive Video Stream Visualizer -->
@@ -135,10 +144,20 @@ import { VideoVisualizerComponent } from '../../components/video-visualizer/vide
                 <li>ARM, x86, and NVIDIA embedded platform support</li>
                 <li>Edge-to-cloud telemetry sync with configurable bandwidth caps</li>
               </ul>
+              <div class="tech-stack-row">
+                <span class="tech-badge-chip">NVIDIA Orin</span>
+                <span class="tech-badge-chip">CUDA 12</span>
+                <span class="tech-badge-chip">Edge IoT</span>
+                <span class="tech-badge-chip">Ubuntu Core</span>
+                <span class="tech-badge-chip">Red Hat RHEL</span>
+              </div>
             </div>
           </div>
         </section>
       </div>
+
+      <!-- ENTERPRISE ECOSYSTEM LOGO SHOWCASE -->
+      <app-tech-logos [mode]="'grid'"></app-tech-logos>
 
       <!-- CTA BANNER -->
       <section class="section-padding">
@@ -215,6 +234,34 @@ import { VideoVisualizerComponent } from '../../components/video-visualizer/vide
       font-size: 0.98rem;
       color: var(--color-text-secondary);
       line-height: 1.65;
+    }
+
+    .tech-stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .tech-badge-chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--color-cyan);
+      background: rgba(0, 194, 255, 0.08);
+      border: 1px solid rgba(0, 194, 255, 0.25);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    :host-context([data-theme="light"]) .tech-badge-chip,
+    :host-context(.light-theme) .tech-badge-chip,
+    [data-theme="light"] .tech-badge-chip,
+    .light-theme .tech-badge-chip {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: rgba(2, 132, 199, 0.3);
+      color: #0284c7;
     }
 
     .visualizer-card-wrap {
