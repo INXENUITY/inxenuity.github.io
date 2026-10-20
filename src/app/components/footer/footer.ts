@@ -77,6 +77,21 @@ import { RouterLink } from '@angular/router';
               <li><a routerLink="/contact">Contact</a></li>
             </ul>
           </div>
+
+          <!-- Direct Contact Column -->
+          <div class="footer-col">
+            <h4 class="col-title">DIRECT CONTACT</h4>
+            <ul class="col-links">
+              <li><a href="mailto:hello@inxenuity.com">hello&#64;inxenuity.com</a></li>
+              <li><a href="tel:+919848016664">+91 98480 16664</a></li>
+              <li>
+                <a href="https://wa.me/919848016664?text=Hello%20INXENUITY%20team,%20I%20would%20like%20to%20learn%20more%20about%20your%20multimodal%20AI%20solutions." target="_blank" rel="noopener noreferrer" style="color: #25D366; font-weight: 500;">
+                  WhatsApp Chat ↗
+                </a>
+              </li>
+              <li><span style="color: var(--color-text-secondary); font-size: 0.85rem;">HYDERABAD, IN</span></li>
+            </ul>
+          </div>
         </div>
       </div>
 

@@ -13,23 +13,28 @@ import { ThemeService } from '../../services/theme.service';
       <div class="container navbar-container">
         <!-- Logo -->
         <a routerLink="/" class="navbar-brand" aria-label="INXENUITY Home">
-          <!-- IXY Short Form Vector Logo (ixy-logo-svg-2) -->
-          <svg class="brand-ixy-svg" viewBox="0 0 410 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ixyCyanGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#00E5FF" />
-                <stop offset="100%" stop-color="#00B8D4" />
-              </linearGradient>
-              <linearGradient id="ixySilverGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#B8C4D0" />
-                <stop offset="100%" stop-color="#90A0B0" />
-              </linearGradient>
-            </defs>
-            <polygon points="68,10 96,10 38,150 10,150" fill="url(#ixyCyanGradNav)" />
-            <polygon class="ixy-x-path" points="110,150 140,150 240,10 210,10" fill="var(--color-logo-white, #F5F7FA)" />
-            <polygon class="ixy-x-path" points="110,10 140,10 173,56 158,77" fill="var(--color-logo-white, #F5F7FA)" />
-            <polygon class="ixy-x-path" points="186,104 201,83 249,150 219,150" fill="var(--color-logo-white, #F5F7FA)" />
-            <polygon class="ixy-y-path" points="261,10 291,10 330,68 369,10 399,10 344,90 344,150 316,150 316,90" fill="url(#ixySilverGradNav)" />
+          <!-- Full Text INXENUITY Vector Logo -->
+          <svg class="brand-full-logo" viewBox="0 0 855 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g class="brand-letters" fill="var(--color-logo-white, #F5F7FA)">
+              <!-- I -->
+              <polygon points="10,18 30,10 30,90 10,90" />
+              <!-- N -->
+              <polygon points="56,10 75,10 116,60 116,10 136,10 136,90 117,90 76,40 76,90 56,90" />
+              <!-- X -->
+              <polygon points="158,10 181,10 203,39 225,10 248,10 215,50 250,90 227,90 203,59 179,90 156,90 191,50" />
+              <!-- E -->
+              <polygon points="272,10 344,10 344,27 292,27 292,41 338,41 338,58 292,58 292,73 346,73 346,90 272,90" />
+              <!-- N -->
+              <polygon points="372,10 391,10 432,60 432,10 452,10 452,90 433,90 392,40 392,90 372,90" />
+              <!-- U -->
+              <path d="M480,10 H500 V56 C500,68 508,74 521,74 C534,74 542,68 542,56 V10 H562 V57 C562,79 546,91 521,91 C496,91 480,79 480,57 Z" />
+              <!-- I -->
+              <polygon points="590,18 610,10 610,90 590,90" />
+              <!-- T -->
+              <polygon points="632,10 714,10 714,28 683,28 683,90 663,90 663,28 632,28" />
+              <!-- Y -->
+              <polygon points="730,10 753,10 781,46 809,10 832,10 791,62 791,90 771,90 771,62" />
+            </g>
           </svg>
         </a>
 
@@ -136,30 +141,21 @@ import { ThemeService } from '../../services/theme.service';
       text-decoration: none;
     }
 
-    .brand-ixy-svg {
-      height: 36px;
+    .brand-full-logo {
+      height: 24px;
       width: auto;
-      max-width: 95px;
-      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.45));
-      transition: filter 0.25s ease, transform 0.25s ease;
+      max-width: 205px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
       flex-shrink: 0;
     }
 
-    .ixy-x-path {
+    .brand-letters {
       fill: var(--color-logo-white);
-      transition: fill 0.2s ease;
+      transition: fill 0.25s ease;
     }
 
-    .ixy-y-path {
-      transition: fill 0.2s ease;
-    }
-
-    :host-context([data-theme="light"]) .ixy-y-path {
-      fill: #64748b;
-    }
-
-    .navbar-brand:hover .brand-ixy-svg {
-      filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.75));
+    .navbar-brand:hover .brand-full-logo {
+      opacity: 0.9;
       transform: translateY(-1px);
     }
 
@@ -298,6 +294,16 @@ import { ThemeService } from '../../services/theme.service';
 
       .mobile-menu {
         display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand-full-logo {
+        height: 20px;
+        max-width: 160px;
+      }
+      .navbar-wrapper {
+        height: 64px;
       }
     }
   `]

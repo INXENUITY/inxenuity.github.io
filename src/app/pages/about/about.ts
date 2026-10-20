@@ -243,12 +243,12 @@ import { BriefingService } from '../../services/briefing.service';
               </p>
             </div>
             <div class="cta-actions">
-              <button (click)="briefingService.open()" class="btn-primary">
-                Request a Briefing
-              </button>
-              <a routerLink="/contact" class="btn-secondary">
-                View Open Roles
+              <a routerLink="/contact" class="btn-primary">
+                Contact Engineering
               </a>
+              <button (click)="briefingService.open()" class="btn-secondary">
+                Direct Connect Hub
+              </button>
             </div>
           </div>
         </div>

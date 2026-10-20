@@ -1,18 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BriefingService } from '../../services/briefing.service';
+import { VideoVisualizerComponent } from '../../components/video-visualizer/video-visualizer';
 
 @Component({
   selector: 'app-platform',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, VideoVisualizerComponent],
   template: `
     <div class="page-wrapper">
       <!-- HERO SECTION -->
       <section class="hero-section">
         <div class="container hero-container">
           <div class="hero-content">
-            <div class="tag-eyebrow">Multimodal AI Architecture</div>
+            <div class="tag-eyebrow">MULTIMODAL AI ARCHITECTURE</div>
             <h1 class="hero-title">
               Intelligence<br />
               Engineered for<br />
@@ -34,59 +35,13 @@ import { BriefingService } from '../../services/briefing.service';
             </div>
           </div>
 
-          <!-- Hero Stack Diagram -->
-          <div class="hero-diagram">
-            <div class="stack-box-container hud-bracket-tl-br">
-              <div class="stack-box active-layer">
-                <div class="stack-header">
-                  <span class="mono-label">SENSOR INPUT LAYER</span>
-                  <span class="indicator-dot"></span>
-                </div>
-                <div class="stack-desc">Camera · LiDAR · Microphone · IMU · IoT Streams</div>
-              </div>
-
-              <div class="stack-connector">
-                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-                  <line x1="10" y1="24" x2="10" y2="0" stroke="#00C2FF" stroke-width="1.5" stroke-dasharray="3 3"/>
-                  <polygon points="10,0 6,6 14,6" fill="#00C2FF" />
-                </svg>
-              </div>
-
-              <div class="stack-box">
-                <div class="stack-header">
-                  <span class="mono-label">MULTIMODAL FUSION ENGINE</span>
-                </div>
-                <div class="stack-desc">Vision + Audio + Sensor Fusion · Feature Extraction</div>
-              </div>
-
-              <div class="stack-connector">
-                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-                  <line x1="10" y1="24" x2="10" y2="0" stroke="#00C2FF" stroke-width="1.5" stroke-dasharray="3 3"/>
-                  <polygon points="10,0 6,6 14,6" fill="#00C2FF" />
-                </svg>
-              </div>
-
-              <div class="stack-box">
-                <div class="stack-header">
-                  <span class="mono-label">INFERENCE ORCHESTRATOR</span>
-                </div>
-                <div class="stack-desc">Real-time Model Serving · Containerised Runtime</div>
-              </div>
-
-              <div class="stack-connector">
-                <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-                  <line x1="10" y1="24" x2="10" y2="0" stroke="#00C2FF" stroke-width="1.5" stroke-dasharray="3 3"/>
-                  <polygon points="10,0 6,6 14,6" fill="#00C2FF" />
-                </svg>
-              </div>
-
-              <div class="stack-box">
-                <div class="stack-header">
-                  <span class="mono-label">DEPLOYMENT TARGETS</span>
-                </div>
-                <div class="stack-desc">Cloud · Edge · Robotics · Digital Twins · IoT</div>
-              </div>
-            </div>
+          <!-- Hero Video Stream Visualizer -->
+          <div class="hero-visualizer-wrap">
+            <app-video-visualizer 
+              [mode]="'multimodal'" 
+              [title]="'MULTIMODAL SENSOR STREAM // INX-CORE'"
+              [resolution]="'1080p60'">
+            </app-video-visualizer>
           </div>
         </div>
       </section>
@@ -367,11 +322,11 @@ import { BriefingService } from '../../services/briefing.service';
               </p>
             </div>
             <div class="cta-actions">
-              <button (click)="briefingService.open()" class="btn-primary">
-                Request a Technical Briefing
-              </button>
+              <a routerLink="/contact" class="btn-primary">
+                Contact Engineering
+              </a>
               <a routerLink="/solutions" class="btn-secondary">
-                View Platform Docs
+                Explore Enterprise Solutions
               </a>
             </div>
           </div>
@@ -391,6 +346,20 @@ import { BriefingService } from '../../services/briefing.service';
       grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
       gap: 60px;
+    }
+
+    .hero-visualizer-wrap {
+      width: 100%;
+      min-width: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 194, 255, 0.1);
+      border: 1px solid var(--color-border);
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .hero-visualizer-wrap:hover {
+      transform: translateY(-2px);
     }
 
     .hero-title {
