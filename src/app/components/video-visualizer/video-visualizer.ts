@@ -511,12 +511,16 @@ export class VideoVisualizerComponent implements OnInit, OnDestroy {
   private isVisible = true;
   private observer: IntersectionObserver | null = null;
 
-  // Visual simulation variables
+  // Visual simulation variables (clean, simpler industrial targets)
   private objects = [
-    { x: 120, y: 100, w: 90, h: 70, dx: 0.8, dy: 0.4, label: 'WORKER // ID_402', conf: 0.984 },
-    { x: 300, y: 140, w: 140, h: 90, dx: -0.6, dy: 0.3, label: 'ROBOTIC AGV_08', conf: 0.991 },
-    { x: 480, y: 80, w: 110, h: 80, dx: 0.5, dy: -0.5, label: 'DEFECT SCANNER', conf: 0.978 }
+    { x: 120, y: 70, w: 120, h: 75, dx: 0.45, dy: 0.22, label: 'ROBOTIC AGV', action: 'ACTION: TRACKING', conf: 0.992, isAnomaly: false },
+    { x: 340, y: 95, w: 130, h: 80, dx: -0.38, dy: 0.25, label: 'MOTOR ROTOR', action: 'ACTION: 1800 RPM', conf: 0.987, isAnomaly: false }
   ];
+
+  // Acoustic fault simulation state
+  private acousticPeaks: number[] = Array.from({ length: 20 }, () => 15);
+  private lastAnomalyToggle = 0;
+  private isAcousticAnomaly = false;
 
   ngOnInit(): void {
     if (!this.isBrowser) return;
@@ -673,82 +677,222 @@ export class VideoVisualizerComponent implements OnInit, OnDestroy {
   }
 
   private drawMultimodalFusion(ctx: CanvasRenderingContext2D, w: number, h: number, dpr: number, t: number): void {
-    // 1. Radar LiDAR radial sweep
+    // 1. Subtle Radar LiDAR radial sweep
     const cx = w * 0.5;
-    const cy = h * 0.45;
-    const radius = Math.min(w, h) * 0.35;
+    const cy = h * 0.42;
+    const radius = Math.min(w, h) * 0.32;
 
     ctx.save();
-    ctx.strokeStyle = 'rgba(0, 194, 255, 0.3)';
+    ctx.strokeStyle = 'rgba(0, 194, 255, 0.18)';
     ctx.lineWidth = 1 * dpr;
     ctx.beginPath();
     ctx.arc(cx, cy, radius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.beginPath();
-    ctx.arc(cx, cy, radius * 0.65, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(cx, cy, radius * 0.35, 0, Math.PI * 2);
+    ctx.arc(cx, cy, radius * 0.6, 0, Math.PI * 2);
     ctx.stroke();
 
-    // Sweep line
-    const sweepAngle = (t * 1.5) % (Math.PI * 2);
+    // Subtle Sweep Line
+    const sweepAngle = (t * 1.2) % (Math.PI * 2);
     const grad = ctx.createLinearGradient(cx, cy, cx + Math.cos(sweepAngle) * radius, cy + Math.sin(sweepAngle) * radius);
-    grad.addColorStop(0, 'rgba(0, 194, 255, 0.7)');
+    grad.addColorStop(0, 'rgba(0, 194, 255, 0.5)');
     grad.addColorStop(1, 'rgba(0, 194, 255, 0)');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = 2 * dpr;
+    ctx.lineWidth = 1.5 * dpr;
     ctx.beginPath();
     ctx.moveTo(cx, cy);
     ctx.lineTo(cx + Math.cos(sweepAngle) * radius, cy + Math.sin(sweepAngle) * radius);
     ctx.stroke();
     ctx.restore();
 
-    // 2. Animated Object Bounding Boxes
+    // 2. Simplified, Clean Object & Action Detection Bounding Boxes
     this.objects.forEach((obj, idx) => {
       obj.x += obj.dx * dpr;
       obj.y += obj.dy * dpr;
-      if (obj.x < 30 * dpr || obj.x + obj.w * dpr > w - 30 * dpr) obj.dx *= -1;
-      if (obj.y < 40 * dpr || obj.y + obj.h * dpr > h * 0.7) obj.dy *= -1;
+      if (obj.x < 24 * dpr || obj.x + obj.w * dpr > w - 24 * dpr) obj.dx *= -1;
+      if (obj.y < 35 * dpr || obj.y + obj.h * dpr > h * 0.65) obj.dy *= -1;
 
       const ox = obj.x;
       const oy = obj.y;
       const ow = obj.w * dpr;
       const oh = obj.h * dpr;
 
-      // Draw box
-      ctx.strokeStyle = idx === 1 ? '#00e5ff' : '#0090ff';
-      ctx.lineWidth = 1.5 * dpr;
+      // Clean translucent box fill
+      ctx.fillStyle = idx === 0 ? 'rgba(0, 194, 255, 0.05)' : 'rgba(56, 189, 248, 0.05)';
+      ctx.fillRect(ox, oy, ow, oh);
+
+      // Clean thin border
+      ctx.strokeStyle = idx === 0 ? '#00c2ff' : '#38bdf8';
+      ctx.lineWidth = 1.2 * dpr;
       ctx.strokeRect(ox, oy, ow, oh);
 
-      // Corner brackets
-      ctx.fillStyle = '#00e5ff';
+      // 4 Subtle corner brackets
       const bSize = 6 * dpr;
-      ctx.fillRect(ox, oy, bSize, 2 * dpr);
-      ctx.fillRect(ox, oy, 2 * dpr, bSize);
-      ctx.fillRect(ox + ow - bSize, oy, bSize, 2 * dpr);
-      ctx.fillRect(ox + ow - 2 * dpr, oy, 2 * dpr, bSize);
+      ctx.strokeStyle = '#00e5ff';
+      ctx.lineWidth = 2 * dpr;
 
-      // Label
-      ctx.fillStyle = 'rgba(7, 13, 24, 0.85)';
-      ctx.fillRect(ox, oy - 16 * dpr, 110 * dpr, 14 * dpr);
+      ctx.beginPath();
+      ctx.moveTo(ox, oy + bSize); ctx.lineTo(ox, oy); ctx.lineTo(ox + bSize, oy);
+      ctx.moveTo(ox + ow - bSize, oy); ctx.lineTo(ox + ow, oy); ctx.lineTo(ox + ow, oy + bSize);
+      ctx.moveTo(ox, oy + oh - bSize); ctx.lineTo(ox, oy + oh); ctx.lineTo(ox + bSize, oy + oh);
+      ctx.moveTo(ox + ow - bSize, oy + oh); ctx.lineTo(ox + ow, oy + oh); ctx.lineTo(ox + ow, oy + oh - bSize);
+      ctx.stroke();
+
+      // Optical center cross
+      const midX = ox + ow / 2;
+      const midY = oy + oh / 2;
+      ctx.fillStyle = '#00e5ff';
+      ctx.beginPath();
+      ctx.arc(midX, midY, 2 * dpr, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Clean single-line header tag badge
+      ctx.fillStyle = 'rgba(7, 13, 24, 0.9)';
+      const tagText = `${obj.label} [${(obj.conf * 100).toFixed(1)}%]`;
+      ctx.font = `600 ${7.5 * dpr}px monospace`;
+      const textW = ctx.measureText(tagText).width;
+      ctx.fillRect(ox, oy - 14 * dpr, textW + 8 * dpr, 14 * dpr);
+      ctx.strokeStyle = idx === 0 ? '#00c2ff' : '#38bdf8';
+      ctx.lineWidth = 1 * dpr;
+      ctx.strokeRect(ox, oy - 14 * dpr, textW + 8 * dpr, 14 * dpr);
+
       ctx.fillStyle = '#ffffff';
-      ctx.font = `${8 * dpr}px monospace`;
-      ctx.fillText(`${obj.label} [${(obj.conf * 100).toFixed(1)}%]`, ox + 4 * dpr, oy - 6 * dpr);
+      ctx.fillText(tagText, ox + 4 * dpr, oy - 4 * dpr);
+
+      // Minimal action detection chip below box
+      ctx.fillStyle = 'rgba(0, 194, 255, 0.12)';
+      const actText = obj.action;
+      ctx.font = `600 ${6.5 * dpr}px monospace`;
+      const actW = ctx.measureText(actText).width;
+      ctx.fillRect(ox, oy + oh + 2 * dpr, actW + 6 * dpr, 12 * dpr);
+      ctx.fillStyle = '#38bdf8';
+      ctx.fillText(actText, ox + 3 * dpr, oy + oh + 11 * dpr);
     });
 
-    // 3. Audio Spectrogram Frequency Waterfall at the bottom
-    const barCount = 48;
-    const barWidth = (w - 40 * dpr) / barCount;
-    const startY = h - 45 * dpr;
-    ctx.fillStyle = 'rgba(0, 194, 255, 0.7)';
-    for (let i = 0; i < barCount; i++) {
-      const freqHeight = (Math.sin(t * 3 + i * 0.4) * 0.5 + 0.5) * 30 * dpr + 4 * dpr;
-      ctx.fillRect(20 * dpr + i * barWidth, startY - freqHeight, barWidth - 2 * dpr, freqHeight);
+    // 3. Elevated, Clean Acoustic Frequency & Fault Detection Spectrogram (Bottom Left)
+    const acousticX = 24 * dpr;
+    const acousticY = h - 18 * dpr;
+    const barCount = 18;
+    const barWidth = 7 * dpr;
+    const barGap = 4 * dpr;
+
+    // Check simulated anomaly trigger
+    const now = Date.now();
+    if (now - this.lastAnomalyToggle > 5000) {
+      this.lastAnomalyToggle = now;
+      this.isAcousticAnomaly = !this.isAcousticAnomaly;
     }
-    ctx.fillStyle = '#94a3b8';
-    ctx.font = `${7 * dpr}px monospace`;
-    ctx.fillText('AUDIO ACOUSTIC TELEMETRY STREAM // 24-BIT 96KHZ', 20 * dpr, h - 10 * dpr);
+
+    // Acoustic section label
+    ctx.font = `700 ${7 * dpr}px monospace`;
+    ctx.fillStyle = '#00c2ff';
+    ctx.fillText('ACOUSTIC SPECTRUM // 0–24 kHz', acousticX, acousticY - 42 * dpr);
+
+    ctx.font = `600 ${6.5 * dpr}px monospace`;
+    if (this.isAcousticAnomaly) {
+      ctx.fillStyle = '#f43f5e';
+      ctx.fillText('FAULT DETECTED: BEARING WEAR RESONANCE @ 8.4 kHz', acousticX, acousticY - 32 * dpr);
+    } else {
+      ctx.fillStyle = '#10b981';
+      ctx.fillText('FAULT DETECTION: NOMINAL // HARMONIC DISTORTION 0.02%', acousticX, acousticY - 32 * dpr);
+    }
+
+    // Render smooth rounded equalizer bars with floating peak caps
+    for (let i = 0; i < barCount; i++) {
+      const bx = acousticX + i * (barWidth + barGap);
+      const isFaultBand = (i === 11) && this.isAcousticAnomaly; // 8.4 kHz band
+
+      // Smooth harmonic calculation
+      const wave = Math.sin(t * 2.8 + i * 0.4) * 0.35 + Math.sin(t * 1.5 + i * 0.8) * 0.25 + 0.4;
+      let bh = Math.max(4 * dpr, wave * (24 * dpr));
+      if (isFaultBand) {
+        bh = Math.max(bh, 26 * dpr); // Peak spike on fault
+      }
+
+      // Smooth peak decay
+      if (bh > (this.acousticPeaks[i] || 0)) {
+        this.acousticPeaks[i] = bh;
+      } else {
+        this.acousticPeaks[i] = Math.max(bh, (this.acousticPeaks[i] || 0) - 0.3 * dpr);
+      }
+
+      // Gradient fill
+      const barGrad = ctx.createLinearGradient(bx, acousticY, bx, acousticY - bh);
+      if (isFaultBand) {
+        barGrad.addColorStop(0, 'rgba(244, 63, 94, 0.3)');
+        barGrad.addColorStop(1, '#f43f5e');
+      } else {
+        barGrad.addColorStop(0, 'rgba(0, 102, 204, 0.4)');
+        barGrad.addColorStop(1, '#00c2ff');
+      }
+
+      ctx.fillStyle = barGrad;
+      // Rounded bar
+      const by = acousticY - bh;
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(bx, by, barWidth, bh, [2 * dpr, 2 * dpr, 0, 0]) : ctx.rect(bx, by, barWidth, bh);
+      ctx.fill();
+
+      // Floating peak cap dot
+      const peakY = acousticY - (this.acousticPeaks[i] || bh) - 2 * dpr;
+      ctx.fillStyle = isFaultBand ? '#f43f5e' : '#ffffff';
+      ctx.beginPath();
+      ctx.arc(bx + barWidth / 2, peakY, 1.2 * dpr, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // 4. Clean Sensor Telemetry Oscilloscope (Anomaly Pattern Detection) (Bottom Right)
+    const telemW = Math.min(180 * dpr, w * 0.35);
+    const telemX = w - telemW - 24 * dpr;
+    const telemY = h - 42 * dpr;
+    const telemH = 34 * dpr;
+
+    ctx.font = `700 ${7 * dpr}px monospace`;
+    ctx.fillStyle = '#00c2ff';
+    ctx.fillText('SENSOR TELEMETRY // ANOMALY DETECTOR', telemX, telemY - 8 * dpr);
+
+    // Oscilloscope background
+    ctx.fillStyle = 'rgba(10, 16, 28, 0.6)';
+    ctx.fillRect(telemX, telemY, telemW, telemH);
+    ctx.strokeStyle = 'rgba(0, 194, 255, 0.2)';
+    ctx.lineWidth = 1 * dpr;
+    ctx.strokeRect(telemX, telemY, telemW, telemH);
+
+    // Safe threshold dashed bounds
+    ctx.strokeStyle = 'rgba(0, 194, 255, 0.25)';
+    ctx.lineWidth = 0.8 * dpr;
+    ctx.setLineDash([2 * dpr, 3 * dpr]);
+    ctx.beginPath();
+    ctx.moveTo(telemX, telemY + 6 * dpr); ctx.lineTo(telemX + telemW, telemY + 6 * dpr);
+    ctx.moveTo(telemX, telemY + telemH - 6 * dpr); ctx.lineTo(telemX + telemW, telemY + telemH - 6 * dpr);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Live continuous sine-telemetry wave
+    ctx.strokeStyle = this.isAcousticAnomaly ? '#f43f5e' : '#00e5ff';
+    ctx.lineWidth = 1.2 * dpr;
+    ctx.beginPath();
+    const points = 32;
+    const pStep = telemW / points;
+    const midY = telemY + telemH / 2;
+
+    for (let p = 0; p <= points; p++) {
+      const px = telemX + p * pStep;
+      const spike = (this.isAcousticAnomaly && p > 24) ? Math.sin((t * 8) + p) * 11 * dpr : 0;
+      const py = midY + Math.sin(t * 4 + p * 0.4) * (8 * dpr) + spike;
+      if (p === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // Telemetry label
+    ctx.font = `600 ${6.5 * dpr}px monospace`;
+    ctx.fillStyle = this.isAcousticAnomaly ? '#f43f5e' : '#94a3b8';
+    ctx.fillText(
+      this.isAcousticAnomaly ? 'CH-1 VIBRATION EXCEEDS 2.5σ [SPIKE FLAGGED]' : 'CH-1 IMU: 0.82G [NOMINAL] &bull; 74.2°C',
+      telemX,
+      telemY + telemH + 11 * dpr
+    );
   }
 
   private drawDigitalTwin(ctx: CanvasRenderingContext2D, w: number, h: number, dpr: number, t: number): void {

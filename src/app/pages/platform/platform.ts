@@ -1,36 +1,28 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BriefingService } from '../../services/briefing.service';
-import { HeroBackgroundVisualizerComponent } from '../../components/hero-background-visualizer/hero-background-visualizer';
+import { VideoVisualizerComponent } from '../../components/video-visualizer/video-visualizer';
 import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
 
 @Component({
   selector: 'app-platform',
   standalone: true,
-  imports: [RouterLink, HeroBackgroundVisualizerComponent, TechLogosComponent],
+  imports: [RouterLink, VideoVisualizerComponent, TechLogosComponent],
   template: `
     <div class="page-wrapper">
-      <!-- HERO SECTION WITH HORIZONTALLY FILLING INFERENCE BACKGROUND EFFECT -->
+      <!-- HERO SECTION -->
       <section class="hero-section">
-        <!-- Background Animation Horizontally Filling the Entire Hero Section -->
-        <app-hero-background-visualizer></app-hero-background-visualizer>
-
         <div class="container hero-container">
           <div class="hero-content">
-            <div class="hero-status-pill">
-              <span class="live-pulse-dot"></span>
-              MULTIMODAL AI RUNTIME &bull; COMPUTER VISION &bull; ACOUSTIC &bull; TELEMETRY
-            </div>
-
+            <div class="tag-eyebrow">MULTIMODAL AI ARCHITECTURE</div>
             <h1 class="hero-title">
-              Intelligence Engineered<br />
-              for Every Industrial Layer
+              Intelligence<br />
+              Engineered for<br />
+              Every Layer
             </h1>
-
             <p class="hero-subtitle">
-              Unified multimodal computer vision, acoustic system fault detection, and real-time sensor anomaly pattern recognition — containerised, deterministic at sub-5ms latency, and production-ready across industrial digital twins, autonomous robotics, edge nodes, and cloud infrastructure.
+              Unified vision and audio AI platforms — containerised, real-time, and deployable across digital twins, robotics, edge devices, and cloud infrastructure.
             </p>
-
             <div class="hero-cta-group">
               <a href="#four-pillars" class="btn-primary">
                 Explore the Platform
@@ -45,35 +37,18 @@ import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
                 Direct Connect Hub
               </button>
             </div>
+          </div>
 
-            <!-- Hero Metrics Bar -->
-            <div class="hero-metrics-bar">
-              <div class="metric-item">
-                <span class="metric-val">&lt; 5ms</span>
-                <span class="metric-label">Inference Latency</span>
-              </div>
-              <div class="metric-divider"></div>
-              <div class="metric-item">
-                <span class="metric-val">60 FPS</span>
-                <span class="metric-label">Real-time Vision</span>
-              </div>
-              <div class="metric-divider"></div>
-              <div class="metric-item">
-                <span class="metric-val">0–24 kHz</span>
-                <span class="metric-label">Acoustic Fault AI</span>
-              </div>
-              <div class="metric-divider"></div>
-              <div class="metric-item">
-                <span class="metric-val">8W TDP</span>
-                <span class="metric-label">Edge Constrained</span>
-              </div>
-            </div>
+          <!-- Hero Video Stream Visualizer Card -->
+          <div class="hero-visualizer-wrap">
+            <app-video-visualizer 
+              [mode]="'multimodal'" 
+              [title]="'MULTIMODAL SENSOR STREAM // INX-CORE'"
+              [resolution]="'1080p60'">
+            </app-video-visualizer>
           </div>
         </div>
       </section>
-
-      <!-- TECH ECOSYSTEM & RUNTIMES RIBBON -->
-      <app-tech-logos [mode]="'ribbon'"></app-tech-logos>
 
       <!-- FOUR PILLARS SECTION -->
       <section id="four-pillars" class="section-padding">
@@ -368,124 +343,52 @@ import { TechLogosComponent } from '../../components/tech-logos/tech-logos';
   `,
   styles: [`
     .hero-section {
-      position: relative;
-      width: 100%;
-      min-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 155px;
+      padding-top: 150px;
       padding-bottom: 90px;
-      overflow: hidden;
+      position: relative;
     }
 
     .hero-container {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
-      text-align: center;
+      gap: 60px;
+    }
+
+    .hero-visualizer-wrap {
       width: 100%;
-    }
-
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hero-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--color-cyan);
-      background: var(--color-surface-translucent);
+      min-width: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 194, 255, 0.1);
       border: 1px solid var(--color-border);
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-      letter-spacing: 0.08em;
-      backdrop-filter: blur(8px);
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
     }
 
-    .live-pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 10px #10b981;
-      animation: pulse 1.5s infinite;
+    .hero-visualizer-wrap:hover {
+      transform: translateY(-2px);
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       margin-bottom: 24px;
       font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 1.12;
-      color: var(--color-text-heading);
+      line-height: 1.15;
     }
 
     .hero-subtitle {
-      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-      line-height: 1.65;
+      font-size: 1.1rem;
+      line-height: 1.6;
       color: var(--color-text-secondary);
-      max-width: 780px;
-      margin-bottom: 40px;
+      max-width: 540px;
+      margin-bottom: 36px;
     }
 
     .hero-cta-group {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 44px;
-    }
-
-    .hero-metrics-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      padding: 16px 32px;
-      background: var(--color-surface-translucent);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      backdrop-filter: blur(12px);
-      flex-wrap: wrap;
-    }
-
-    .metric-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .metric-val {
-      font-family: var(--font-mono);
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--color-cyan);
-    }
-
-    .metric-label {
-      font-family: var(--font-sans);
-      font-size: 0.76rem;
-      color: var(--color-text-secondary);
-      letter-spacing: 0.02em;
-    }
-
-    .metric-divider {
-      width: 1px;
-      height: 28px;
-      background: var(--color-border);
     }
 
     /* Stack Box Diagram Styles */
